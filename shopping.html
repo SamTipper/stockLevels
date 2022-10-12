@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <script src="shopping.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" id="amount" href="index.html">0 Unique Products!</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Stock</a></li>
+            <li class="active"><a href="#">Shopping</a></li>
+            <li><a href="access.html">Access</a></li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <table class="table table-bordered" id="table">
+          <label id="version">Shopping List</label>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <button disabled class="btn btn-success" id="save">Save Changes</button>
+        <button disabled class="btn btn-success" id="new">New List</button>
+        <button disabled class="btn btn-success" id="done">Shop Done</button>
+      </div>
+</body>
+</html>

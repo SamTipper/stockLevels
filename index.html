@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" id="amount" href="index.html">0 Unique Products</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Stock</a></li>
+            <li><a href="shopping.html">Shopping</a></li>
+            <li><a href="access.html">Access</a></li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+      <div class="col-xs-12">
+        <label>Add an item!</label><br>
+        <input placeholder="Product Name" id="item">
+        <input placeholder="Quantity" id="quant" onkeypress="return onlyNumberKey(event)">
+        <button disabled class="btn btn-primary" id="add">Add Item</button>
+        <button disabled id="reload" type="button" class="btn btn-success btn-sm pull-right" style="margin-left: 10px; height: 34px; width: 40px;">
+          <span class="glyphicon glyphicon-repeat"></span>
+        </button>
+        <button disabled class="btn btn-success pull-right" id="save">Save Changes</button>
+        <hr>
+      </div>
+      <table class="table table-bordered" id="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+</body>
+</html>
