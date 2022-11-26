@@ -16,11 +16,22 @@ if (localStorage.getItem("api-key") !== null){
 
 function connect(){
     const Http = new XMLHttpRequest();
-    Http.open("GET", "https://api.samtipper.repl.co/check-key");
+    Http.open("GET", "https://api.samtipper.repl.co/auth-user");
         Http.setRequestHeader("Content-Type", "application/json");
         Http.setRequestHeader("Api-Key", APIKEY);
         Http.send();
-    return Http.response;
+        Http.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200){
+                if (APIKEY !== this.response){
+                    APIKEY = this.response
+                    localStorage.setItem("api-key", this.response);
+                }
+                onLoad();
+                return 0;
+            } else if (this.readyState === 4 && this.status === 401){
+                document.getElementById('amount').innerHTML = "Access Denied";
+            }
+        }
 }
 
 function onlyNumberKey(evt) {
@@ -168,4 +179,5 @@ function reload(){
 }
 
 
-onLoad();
+connect();
+

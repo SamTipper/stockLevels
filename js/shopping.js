@@ -15,17 +15,42 @@ if (localStorage.getItem("api-key") !== null){
     APIKEY = localStorage.setItem("api-key", "temp");
 }
 
-const HTTP = new XMLHttpRequest();
-    HTTP.open("GET", "https://api.samtipper.repl.co/get");
-    HTTP.setRequestHeader("Content-Type", "application/json");
-    HTTP.setRequestHeader("Api-Key", APIKEY);
-    HTTP.send();
-    HTTP.onreadystatechange = function(){
-        if (this.readyState === 4 && this.status === 200){
-            document.getElementById('amount').innerHTML = `${HTTP.response} Unique Products!`;
+function connect(){
+    const Http = new XMLHttpRequest();
+    Http.open("GET", "https://api.samtipper.repl.co/auth-user");
+        Http.setRequestHeader("Content-Type", "application/json");
+        Http.setRequestHeader("Api-Key", APIKEY);
+        Http.send();
+        Http.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200){
+                if (APIKEY !== this.response){
+                    APIKEY = this.response
+                    localStorage.setItem("api-key", this.response);
+                }
+                productCount();
+                getList();
+                return 0;
+            } else if (this.readyState === 4 && this.status === 401){
+                document.getElementById('amount').innerHTML = "Access Denied";
+            }
+        }
+}
+
+function productCount(){
+    const HTTP = new XMLHttpRequest();
+        HTTP.open("GET", "https://api.samtipper.repl.co/get");
+        HTTP.setRequestHeader("Content-Type", "application/json");
+        HTTP.setRequestHeader("Api-Key", APIKEY);
+        HTTP.send();
+        HTTP.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200){
+                document.getElementById('amount').innerHTML = `${HTTP.response} Unique Products!`;
+            }
         }
     }
 
+
+    
 function populateTable(items){
     let itemsObj = JSON.parse(items);
     let editable = true;
@@ -155,4 +180,5 @@ function mergeBoughtItems(){
     newList();
 }
 
-getList();
+
+connect();
