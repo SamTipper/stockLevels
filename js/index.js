@@ -7,11 +7,16 @@ saveChangesButton.addEventListener("click", checkChanges);
 reloadButton.addEventListener("click", reload);
 let products = {};
 let APIKEY;
+const VERSION = "0.0.3";
 
 if (localStorage.getItem("api-key") !== null){
     APIKEY = localStorage.getItem("api-key");
 }else{
     APIKEY = localStorage.setItem("api-key", "temp");
+}
+
+function version(){
+    console.log(VERSION);
 }
 
 function connect(){
