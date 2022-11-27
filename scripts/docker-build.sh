@@ -9,5 +9,5 @@ docker buildx create --name builder --driver docker-container --use
 docker buildx use builder
 
 # Run build
-docker buildx build -f docker/Dockerfile --platform linux/amd64,linux/arm/v7 --tag registry.coombszy.com/stocklevels:latest . --push
+docker buildx build -f docker/Dockerfile --platform linux/amd64,linux/arm/64 --tag registry.coombszy.com/stocklevels:latest . --push
 
